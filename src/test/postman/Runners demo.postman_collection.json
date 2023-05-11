@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "3280806a-0a27-445f-b66a-efc67205ca2f",
+		"_postman_id": "71a7fba7-7f54-47b9-a23e-f94b6d8e4a4b",
 		"name": "Runners demo",
 		"description": "Runners Demo postman collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "9701363"
+		"_exporter_id": "26498640"
 	},
 	"item": [
 		{
@@ -112,7 +112,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"lapTimeSeconds\": 134\n}",
+					"raw": "{\n    \"lapTimeSeconds\": 120\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -132,6 +132,28 @@
 						"runner",
 						"1",
 						"addlaptime"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAverageAge",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/runner/averageage",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"runner",
+						"averageage"
 					]
 				}
 			},
