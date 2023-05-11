@@ -42,6 +42,23 @@ public class RunnerRestController {
         }
     }
 
+    @GetMapping("/averageage")
+    public double getAverageAge() {
+        List<RunnerEntity> runners = runnerRepository.findAll();
+
+        if(runners.size() != 0) {
+
+            long totalAge = 0;
+            for(RunnerEntity runner : runners) {
+                totalAge += runner.getAge();
+            }
+
+            return (double)totalAge / (double)runners.size();
+        } else {
+            return -1.0;
+        }
+    }
+
     @GetMapping("")
     public List<RunnerEntity> getAllRunners() {
         return runnerRepository.findAll();
@@ -61,6 +78,7 @@ public class RunnerRestController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Runner with ID " + id + " not found");
         }
     }
+
     public static class LapTimeRequest {
         private int lapTimeSeconds;
 
