@@ -64,4 +64,7 @@ public class RunnerEntity {
         this.age = age;
     }
 
+    public void setShoe(ShoeEntity shoe) {
+        this.shoe = shoe;
+    }
 }
