@@ -14,7 +14,7 @@ public class ShoeEntity {
     private String shoeName;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "shoe", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany
     private List<RunnerEntity> runners = new ArrayList<>();
 
     public long getShoeId() {
