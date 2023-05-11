@@ -1,5 +1,6 @@
 package hu.gde.runnersdemo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ public class ShoeEntity {
     private long shoeId;
     private String shoeName;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "shoe", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RunnerEntity> runners = new ArrayList<>();
 

@@ -8,10 +8,12 @@ import org.springframework.stereotype.Component;
 public class DataLoader implements CommandLineRunner {
 
     private final RunnerRepository runnerRepository;
+    private final ShoeRepository shoeRepository;
 
     @Autowired
-    public DataLoader(RunnerRepository runnerRepository) {
+    public DataLoader(RunnerRepository runnerRepository, ShoeRepository shoeRepository) {
         this.runnerRepository = runnerRepository;
+        this.shoeRepository = shoeRepository;
     }
 
     @Override
@@ -19,15 +21,18 @@ public class DataLoader implements CommandLineRunner {
         ShoeEntity shoeEntity1 = new ShoeEntity();
         shoeEntity1.setShoeName("Nike Air Zoom");
 
+        shoeRepository.save(shoeEntity1);
+
         ShoeEntity shoeEntity2 = new ShoeEntity();
         shoeEntity2.setShoeName("Mizuno Wave Rider");
+
+        shoeRepository.save(shoeEntity2);
 
         // create default runner entity
         RunnerEntity runnerEntity = new RunnerEntity();
         runnerEntity.setRunnerName("Tomi");
         runnerEntity.setAveragePace(310);
         runnerEntity.setAge(25);
-        runnerEntity.setShoe(shoeEntity1);
 
         // create default laptime entities and add them to the runner entity
         LapTimeEntity laptime1 = new LapTimeEntity();
@@ -43,13 +48,14 @@ public class DataLoader implements CommandLineRunner {
         runnerEntity.getLaptimes().add(laptime1);
         runnerEntity.getLaptimes().add(laptime2);
 
+        runnerEntity.setShoe(shoeEntity1);
+
         runnerRepository.save(runnerEntity);
 
         RunnerEntity runnerEntity2 = new RunnerEntity();
         runnerEntity2.setRunnerName("Zsuzsi");
         runnerEntity2.setAveragePace(290);
         runnerEntity2.setAge(27);
-        runnerEntity2.setShoe(shoeEntity2);
 
         // create default laptime entities and add them to the runner entity
         LapTimeEntity laptime3 = new LapTimeEntity();
@@ -65,13 +71,14 @@ public class DataLoader implements CommandLineRunner {
         runnerEntity2.getLaptimes().add(laptime3);
         runnerEntity2.getLaptimes().add(laptime4);
 
+        runnerEntity2.setShoe(shoeEntity2);
+
         runnerRepository.save(runnerEntity2);
 
         RunnerEntity runnerEntity3 = new RunnerEntity();
         runnerEntity3.setRunnerName("Katalin");
         runnerEntity3.setAveragePace(300);
         runnerEntity3.setAge(23);
-        runnerEntity3.setShoe(shoeEntity1);
 
         // create default laptime entities and add them to the runner entity
         LapTimeEntity laptime5 = new LapTimeEntity();
@@ -87,7 +94,13 @@ public class DataLoader implements CommandLineRunner {
         runnerEntity2.getLaptimes().add(laptime5);
         runnerEntity2.getLaptimes().add(laptime6);
 
+        runnerEntity3.setShoe(shoeEntity1);
+
         runnerRepository.save(runnerEntity3);
+
+
+
+
     }
 }
 
