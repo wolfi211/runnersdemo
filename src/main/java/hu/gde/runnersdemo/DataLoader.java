@@ -16,11 +16,18 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        ShoeEntity shoeEntity1 = new ShoeEntity();
+        shoeEntity1.setShoeName("Nike Air Zoom");
+
+        ShoeEntity shoeEntity2 = new ShoeEntity();
+        shoeEntity2.setShoeName("Mizuno Wave Rider");
+
         // create default runner entity
         RunnerEntity runnerEntity = new RunnerEntity();
         runnerEntity.setRunnerName("Tomi");
         runnerEntity.setAveragePace(310);
         runnerEntity.setAge(25);
+        runnerEntity.setShoe(shoeEntity1);
 
         // create default laptime entities and add them to the runner entity
         LapTimeEntity laptime1 = new LapTimeEntity();
@@ -42,6 +49,7 @@ public class DataLoader implements CommandLineRunner {
         runnerEntity2.setRunnerName("Zsuzsi");
         runnerEntity2.setAveragePace(290);
         runnerEntity2.setAge(27);
+        runnerEntity2.setShoe(shoeEntity2);
 
         // create default laptime entities and add them to the runner entity
         LapTimeEntity laptime3 = new LapTimeEntity();
@@ -63,6 +71,7 @@ public class DataLoader implements CommandLineRunner {
         runnerEntity3.setRunnerName("Katalin");
         runnerEntity3.setAveragePace(300);
         runnerEntity3.setAge(23);
+        runnerEntity3.setShoe(shoeEntity1);
 
         // create default laptime entities and add them to the runner entity
         LapTimeEntity laptime5 = new LapTimeEntity();
