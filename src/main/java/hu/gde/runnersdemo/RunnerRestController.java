@@ -41,8 +41,7 @@ public class RunnerRestController {
             for (LapTimeEntity laptime : laptimes) {
                 totalTime += laptime.getTimeSeconds();
             }
-            double averageLaptime = (double) totalTime / laptimes.size();
-            return averageLaptime;
+            return (double) totalTime / laptimes.size();
         } else {
             return -1.0;
         }
@@ -89,12 +88,18 @@ public class RunnerRestController {
     public ResponseEntity setShoe(@PathVariable Long id, @RequestBody ShoeRequest shoeRequest) {
         RunnerEntity runner = runnerRepository.findById(id).orElse(null);
         ShoeEntity shoe = shoeRepository.findById(shoeRequest.getShoeId()).orElse(null);
-        if(runner != null && shoe != null) {
+        if (runner != null && shoe != null) {
             runner.setShoe(shoe);
             runnerRepository.save(runner);
             return ResponseEntity.ok().build();
         } else {
+          if (runner != null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Runner with ID " + id + " not found");
+          } if (shoe != null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Runner with ID " + id + " not found");
+          } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Something went wrong");
+          }
         }
     }
 
